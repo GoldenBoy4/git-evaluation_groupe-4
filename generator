@@ -5,9 +5,7 @@ import sys
 
 # Si la longueur des arguments en ligne de commande est différent de 2 on exit le programme avec le code d'erreur 1.
 if (len(sys.argv) != 2):
-    print("Usage: python generator.py <n>")
-    print("or")
-    print("Usage: python3 generator.py <n>")
+    print("Usage: ./generator <nombre d'expressions>")
     sys.exit(1)
 
 # On va gérer les exceptions où l'argument donné n'est pas un chiffre.

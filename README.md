@@ -15,7 +15,7 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 - Une fois installé, vous pouvez exécuter des commandes Linux directement depuis l'invite de commandes Windows ou PowerShell.
 
 ### Prérequis pour le programme minitrice
-Pour pouvoir exécuter le programme minitrice, il faut s'assurer que vous avez les permissions pour lancer le script. C'est à dire quand vous faite la commande ll ou ls -l il faut que dans les permissions du script minitrice, on a des x qui permet de nous dire que l'on peut exécuter ce script. 
+Pour pouvoir exécuter le programme minitrice, il faut s'assurer que vous avez les permissions pour lancer le script. C'est à dire quand vous faite la commande ll ou ls -l, il faut que dans les permissions du script minitrice on a des x qui permet de nous dire que l'on peut exécuter ce script. 
 ## Exécution
 
 ### Utilisation interactive
@@ -124,7 +124,10 @@ $
 
 ## Générateur d'expression
 
-Le programme Minitrice peut être combiné avec le programme Generator pour générer des expressions aléatoires et les évaluer.
+Le programme minitrice peut être combiné avec le programme generator pour générer des expressions aléatoires et les évaluer.
+
+- Il faut préciser le nombre d'expressions que vous souhaitez générer après l'appel au programme 
+- Utilisation du programme generator pour envoyer les expressions au programme minitrice via STDIN.
 
 Exemple d'utilisation avec Generator :
 
@@ -135,6 +138,28 @@ $ ./generator 2 | ./minitrice
 $
 ```
 
-## Bonus : Gestion d'erreur dans le générateur d'expression
+## Gestion d'erreur dans le générateur d'expression
 
-Le générateur d'expression peut générer des erreurs, par exemple une erreur dans la génération des expressions ou une erreur dans les opérations. Ces erreurs ne sont pas gérées pour l'instant mais pourraient être implémentées comme un bonus dans le développement futur du programme.
+Le générateur d'expression peut générer des erreurs, par exemple une erreur dans la génération des expressions ou une erreur dans les opérations. 
+Nous avons implémenter deux gestions d'erreurs dans notre generator:
+
+Premier exemple de gestion d'erreur :
+
+- Gestion d'erreur pour les arguments qui ne sont pas des nombres.
+```bash
+$ ./generator e 
+Veuillez entrer un nombre !
+$
+```
+
+Deuxième exemple de gestion d'erreur : 
+
+- Gestion d'erreur si il y a plus de deux arguments.
+```bash
+$ ./generator 2 2
+Usage: ./generator <nombre d'expressions>
+$
+```
+
+## Publication
+
