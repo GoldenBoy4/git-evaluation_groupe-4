@@ -2,48 +2,67 @@
 
 import sys
 
-def minitrice():
+def main():
+    """
+    Mini-calculatrice gérant l'entrée standard et les pipes.
+    """
     try:
-        "Scénario 2: utilisation de echo"
         if not sys.stdin.isatty():
             # Entrée via un pipe
-            # Scénario 3: On doit prendre ligne par ligne 
-            # et faire l'evaluation à chaque fois
-            expressions = sys.stdin.readlines()
-            for expression in expressions:
-                # Scénario 4: Erreur de Syntaxe"
+            lignes = sys.stdin.readlines()
+            for ligne in lignes:
+                # Supprimer les espaces au début et à la fin de la ligne
+                ligne = ligne.strip()
+                # Vérification de la syntaxe
                 try:
-                    resultat = eval(expression)
+                    compile(ligne, '<string>', 'eval')
+                    # tente de compiler pour vérifier la syntaxe
+                    # Sans compilation certaines expressions arrivent à
+                    # être évaluées même avec des erreurs de syntaxe.
                 except SyntaxError:
-                    print("Erreur de syntaxe pour le calcul: ",f'"{expression}"')
-                    # Le système va retourner le code d'erreur 1
+                    # Affichage comme dans le scénario
+                    print("Erreur de syntaxe pour le calcul:", f'"{ligne}"')
                     sys.exit(1)
-                    # Scénario 5: Division par zéro
+
+                # Évaluation de l'expression
+                try:
+                    resultat = eval(ligne)
+                    # Arrondir le résultat à deux chiffres après la virgule si nécessaire
+                    if isinstance(resultat, float):
+                        resultat = round(resultat, 2)
+                    print(f"{resultat}")
                 except ZeroDivisionError:
-                    print("Division par zéro.")
+                    print("Division par zéro")
                     sys.exit(1)
-                print(resultat)
         else:
-            "Scénario 1: Entrée intérative"
+            # Entrée interactive
             while True:
-                # Saisie expression
+                # Saisie de l'expression
                 expression = input("> ")
-                # Evaluation de l'expression
-                # Scénario 4: Erreur de syntaxe
+
+                # Supprimer les espaces au début et à la fin de l'expression
+                expression = expression.strip()
+
+                # Vérification de la syntaxe
+                try:
+                    compile(expression, '<string>', 'eval')
+                except SyntaxError:
+                    print("Erreur de syntaxe pour le calcul:", expression)
+                    continue  # Passer à l'expression suivante en cas d'erreur
+
+                # Évaluation de l'expression
                 try:
                     resultat = eval(expression)
-                except SyntaxError:
-                    print(f'Erreur de syntaxe pour le calcul: "{expression}"')
-                    # Le système va retourner le code d'erreur 1
-                    sys.exit(1)
-                    # Scénario 5: Divison par zéro
+                    # Arrondir le résultat à deux chiffres après la virgule si nécessaire
+                    if isinstance(resultat, float):
+                        resultat = round(resultat, 2)
+                    print(f"{resultat}")
                 except ZeroDivisionError:
-                    print("Division par zéro.")
-                    sys.exit(1)
-                print(resultat)
+                    print("Division par zéro impossible.")
+
     except EOFError:
         # Affichage du message d'au revoir
         print("\nFin des calculs :)")
-        
-if __name__ =="__main__":
-    minitrice()
+
+if __name__ == "__main__":
+    main()
