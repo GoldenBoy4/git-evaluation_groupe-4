@@ -43,3 +43,20 @@ $ echo $?
 0
 $ 
 ```
+
+### Utilisation en lisant STDIN avec `echo`
+#### Scénario 2:
+- Utiliser la commande echo pour envoyer une expression mathématique (par exemple, "3+12") au programme minitrice via STDIN.
+- Le programme minitrice calcule le résultat de l'expression (par exemple, "15") et l'affiche.
+- Le code de sortie du programme est 0, indiquant une exécution réussie.
+
+Exemple d'utilisation :
+
+```bash
+$ echo "3+25" | ./minitrice
+28
+$ echo $?
+0
+$ 
+```
+
