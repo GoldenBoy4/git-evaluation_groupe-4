@@ -15,7 +15,9 @@ dism.exe /online /enable-feature /featurename:Microsoft-Windows-Subsystem-Linux 
 - Une fois installé, vous pouvez exécuter des commandes Linux directement depuis l'invite de commandes Windows ou PowerShell.
 
 ### Prérequis pour le programme minitrice
-Pour pouvoir exécuter le programme minitrice, il faut s'assurer que vous avez les permissions pour lancer le script. C'est à dire quand vous faite la commande ll ou ls -l, il faut que dans les permissions du script minitrice on a des x qui permet de nous dire que l'on peut exécuter ce script. 
+- Ce programme utilise python pour s'exécuter comme l'atteste cette ligne `#!/usr/bin/env python3`, donc il faut que python soit préinstaller avant de lancer le programme.  
+
+- Pour pouvoir exécuter le programme minitrice, il faut s'assurer que vous avez les permissions pour lancer le script. C'est à dire quand vous faite la commande ll ou ls -l, il faut que dans les permissions du script minitrice on a des x qui permet de nous dire que l'on peut exécuter ce script. 
 ## Exécution
 
 ### Utilisation interactive
