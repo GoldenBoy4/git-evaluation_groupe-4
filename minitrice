@@ -4,13 +4,20 @@ import sys
 
 def minitrice():
     try:
-        "Scénario 1: Entrée intérative"
-        while True:
-            # Saisie expression
-            expression = input("> ")
-            # Evaluation de l'expression
+        "Scénario 2: Utilisation de echo"
+        if not sys.stdin.isatty():
+            # Entrée via un pipe.
+            expression = sys.stdin.read().strip()
             resultat = eval(expression)
             print(resultat)
+        else:
+            "Scénario 1: Entrée intérative"
+            while True:
+                # Saisie expression
+                expression = input("> ")
+                # Evaluation de l'expression
+                resultat = eval(expression)
+                print(resultat)
     except EOFError:
         # Affichage du message d'au revoir
         print("\nFin des calculs :)")
