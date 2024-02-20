@@ -59,4 +59,28 @@ $ echo $?
 0
 $ 
 ```
+### Utilisation en lisant STDIN avec `cat`
+#### Scénario 3:
+- Utiliser la commande `cat` pour envoyer les expressions contenues dans un fichier (par exemple, good-expression.txt) au programme minitrice via STDIN.
+- Le programme minitrice calcule le résultat de chaque expression et les affiche séparément.
+- Une fois toutes les expressions traitées, le code de sortie du programme est 0, indiquant une exécution réussie.
+  
+Exemple d'utilisation avec un fichier contenant des expressions :
+
+```bash
+$ cat good-expression.txt | ./minitrice
+4
+11
+35
+-4
+12
+90
+4.0
+8.0
+10
+4
+$ echo $?
+0
+$ 
+```
 
