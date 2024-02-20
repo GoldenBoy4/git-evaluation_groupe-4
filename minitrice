@@ -15,8 +15,12 @@ def minitrice():
                 try:
                     resultat = eval(expression)
                 except SyntaxError:
-                    print("Erreur de syntaxe pour le calcul: ",f'"{expression.strip()}"')
+                    print("Erreur de syntaxe pour le calcul: ",f'"{expression}"')
                     # Le système va retourner le code d'erreur 1
+                    sys.exit(1)
+                    # Scénario 5: Division par zéro
+                except ZeroDivisionError:
+                    print("Division par zéro.")
                     sys.exit(1)
                 print(resultat)
         else:
@@ -29,8 +33,12 @@ def minitrice():
                 try:
                     resultat = eval(expression)
                 except SyntaxError:
-                    print("Erreur de syntaxe pour le calcul: ",f'"{expression.strip()}"')
+                    print(f'Erreur de syntaxe pour le calcul: "{expression}"')
                     # Le système va retourner le code d'erreur 1
+                    sys.exit(1)
+                    # Scénario 5: Divison par zéro
+                except ZeroDivisionError:
+                    print("Division par zéro.")
                     sys.exit(1)
                 print(resultat)
     except EOFError:
