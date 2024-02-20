@@ -12,6 +12,9 @@ def minitrice():
             for expression in expressions:
                 resultat = eval(expression)
                 print(resultat)
+            expression = sys.stdin.read().strip()
+            resultat = eval(expression)
+            print(resultat)
         else:
             "Scénario 1: Entrée intérative"
             while True:
