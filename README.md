@@ -165,3 +165,4 @@ $
 
 ## Publication
 
+- Lien de la vidéo de gource: https://youtu.be/BLBbEmRYJME
