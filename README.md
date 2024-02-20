@@ -94,6 +94,15 @@ $
 
 En cas d'erreur de syntaxe, le programme affiche un message d'erreur et renvoie un code de sortie 1.
 
+Exemple :
+
+```bash
+$ echo "3+*12" | ./minitrice
+Erreur de syntaxe pour le calcul: "3+*12"
+$ echo $?
+1
+$ 
+```
 
 ### Division par zéro
 #### Scénario 5: 
@@ -103,11 +112,29 @@ En cas d'erreur de syntaxe, le programme affiche un message d'erreur et renvoie 
 - Le code de sortie du programme est 1, indiquant une erreur lors de l'exécution.
 - En cas de division par zéro, le programme affiche un message d'erreur spécifique et renvoie un code de sortie non nul.
 
+Exemple :
 
-
+```bash
 $ echo "3/0" | ./minitrice
 Division par zéro
 $ echo $?
 1
 $ 
 ```
+
+## Générateur d'expression
+
+Le programme Minitrice peut être combiné avec le programme Generator pour générer des expressions aléatoires et les évaluer.
+
+Exemple d'utilisation avec Generator :
+
+```bash
+$ ./generator 2 | ./minitrice
+-2
+7.0
+$
+```
+
+## Bonus : Gestion d'erreur dans le générateur d'expression
+
+Le générateur d'expression peut générer des erreurs, par exemple une erreur dans la génération des expressions ou une erreur dans les opérations. Ces erreurs ne sont pas gérées pour l'instant mais pourraient être implémentées comme un bonus dans le développement futur du programme.
