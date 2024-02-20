@@ -84,6 +84,16 @@ $ echo $?
 $ 
 ```
 
+## Gestion d'erreurs
+
+### Erreur de syntaxe
+#### Scénario 4:
+- Utiliser la commande echo pour envoyer une expression mathématique contenant une erreur de syntaxe (par exemple, "3+*12") au programme minitrice via STDIN.
+- Le programme minitrice détecte l'erreur de syntaxe et affiche un message d'erreur indiquant la nature de l'erreur ("Erreur de syntaxe pour le calcul: "3+*12").
+- Le code de sortie du programme est 1, indiquant une erreur lors de l'exécution.
+
+En cas d'erreur de syntaxe, le programme affiche un message d'erreur et renvoie un code de sortie 1.
+
 
 ### Division par zéro
 #### Scénario 5: 
@@ -93,9 +103,8 @@ $
 - Le code de sortie du programme est 1, indiquant une erreur lors de l'exécution.
 - En cas de division par zéro, le programme affiche un message d'erreur spécifique et renvoie un code de sortie non nul.
 
-Exemple :
 
-```bash
+
 $ echo "3/0" | ./minitrice
 Division par zéro
 $ echo $?
