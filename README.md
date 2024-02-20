@@ -94,13 +94,20 @@ $
 
 En cas d'erreur de syntaxe, le programme affiche un message d'erreur et renvoie un code de sortie 1.
 
-Exemple :
 
-```bash
-$ echo "3+*12" | ./minitrice
-Erreur de syntaxe pour le calcul: "3+*12"
+### Division par zéro
+#### Scénario 5: 
+
+- Utiliser la commande echo pour envoyer une expression mathématique contenant une division par zéro (par exemple, "3/0") au programme minitrice via STDIN.
+- Le programme minitrice détecte la division par zéro et affiche un message d'erreur spécifique ("Division par zéro").
+- Le code de sortie du programme est 1, indiquant une erreur lors de l'exécution.
+- En cas de division par zéro, le programme affiche un message d'erreur spécifique et renvoie un code de sortie non nul.
+
+
+
+$ echo "3/0" | ./minitrice
+Division par zéro
 $ echo $?
 1
 $ 
 ```
-
